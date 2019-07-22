@@ -14,10 +14,10 @@ private:
 	int* tail;
 public:
 	CircularQueue(int cap=10){
-		this->capacity = cap;
-		this->data = new int[this->capacity];
-		this->head = data;
-		this->tail = data;
+		this->capacity = cap; //원형큐의 최대 수용량
+		this->data = new int[this->capacity]; //데이터를 담고 있는 배열
+		this->head = data; //큐에 데이터가 들어갈 장소를 가리킴
+		this->tail = data; //큐에서 데이터가 빠지는 장소를 가리키는 포인터
 		this->size = 0;
 	}
 	
@@ -26,12 +26,11 @@ public:
 			throw invalid_argument("QUEUE FULL");
 		}
 		// ------------------------------------
-		// Implement your Code Here
-		
-		
-		
-		
-		
+		size++;
+		head++;
+		CircularQueue[head] = value;
+
+		return 0;
 		// ------------------------------------
 	}
 
@@ -40,12 +39,11 @@ public:
 			throw invalid_argument("QUEUE EMPTY");
 		}
 		// ------------------------------------
-		// Implement your Code Here
-		
-		
-		
-		
-		return 0;
+		int remove_data = CircularQueue[tail];
+		tail++;
+		size--;
+
+		return remove_data;
 		// ------------------------------------
 	}
 
